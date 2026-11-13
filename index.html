@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173B67">
+<title>HR SYSTEM | إدارة الموارد البشرية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--primary:#173B67;
+--secondary:#3478B9;
+--blue-light:#E9F2FC;
+--bg:#EEF2F7;
+--white:#FFFFFF;
+--text:#243247;
+--muted:#8491A3;
+--border:#E6EBF1;
+--green:#23936D;
+--red:#D85D63;
+--orange:#D99A36;
+--shadow:0 7px 25px rgba(23,59,103,.06);
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:'Cairo',sans-serif;
+background:var(--bg);
+color:var(--text);
+}
+button{font-family:inherit;cursor:pointer}
+.app{min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{
+position:fixed;
+right:0;top:0;bottom:0;
+width:260px;
+background:var(--primary);
+color:white;
+padding:22px 15px;
+display:flex;
+flex-direction:column;
+z-index:100;
+overflow-y:auto;
+transition:.25s;
+}
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+padding:5px 9px 25px;
+border-bottom:1px solid #ffffff20;
+}
+.brand-logo{
+width:43px;height:43px;
+background:white;
+color:var(--primary);
+border-radius:12px;
+display:grid;
+place-items:center;
+font-weight:800;
+font-size:19px;
+}
+.brand-name{font-size:18px;font-weight:800}
+.brand-sub{font-size:9px;color:#C5D5E8}
+.nav-label{
+font-size:10px;
+color:#A9BCD2;
+padding:22px 12px 9px;
+}
+.nav{display:grid;gap:5px}
+.nav button{
+border:0;
+background:transparent;
+color:#D3DFEC;
+text-align:right;
+padding:11px 13px;
+border-radius:9px;
+display:flex;
+align-items:center;
+gap:12px;
+font-size:12px;
+transition:.2s;
+width:100%;
+}
+.nav button:hover{background:#ffffff16;color:white}
+.nav button.active{
+background:var(--secondary);
+color:white;
+box-shadow:inset -3px 0 #fff;
+}
+.nav-icon{width:22px;text-align:center;font-size:17px}
+.sidebar-footer{
+margin-top:auto;
+padding:18px 10px 5px;
+border-top:1px solid #ffffff20;
+font-size:10px;
+color:#B4C5D8;
+line-height:2;
+}
+.sidebar-footer strong{
+display:block;color:white;font-size:12px;
+}
+
+/* MAIN */
+.main{
+margin-right:260px;
+min-height:100vh;
+transition:.25s;
+}
+.topbar{
+height:75px;
+background:white;
+border-bottom:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 28px;
+position:sticky;
+top:0;
+z-index:50;
+}
+.top-right,.top-left{
+display:flex;align-items:center;gap:14px;
+}
+.menu-btn{
+border:0;background:#EEF2F7;
+border-radius:9px;
+width:39px;height:39px;
+color:var(--primary);
+font-size:19px;
+}
+.breadcrumb{font-size:12px;color:var(--muted)}
+.breadcrumb strong{color:var(--primary)}
+.user{
+display:flex;align-items:center;gap:10px;
+border-right:1px solid var(--border);
+padding-right:15px;
+}
+.avatar{
+width:38px;height:38px;
+border-radius:50%;
+display:grid;place-items:center;
+background:var(--blue-light);
+color:var(--primary);
+font-weight:800;
+}
+.user-name{font-size:11px;font-weight:800}
+.user-role{font-size:9px;color:var(--muted)}
+.top-date{font-size:10px;color:var(--muted)}
+
+/* CONTENT */
+.content{
+padding:27px 28px 40px;
+max-width:1600px;
+margin:auto;
+}
+.welcome{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:23px;
+gap:10px;
+}
+.welcome h1{
+margin:0;
+font-size:23px;
+font-weight:800;
+color:var(--primary);
+}
+.welcome p{
+margin:5px 0 0;
+font-size:11px;
+color:var(--muted);
+}
+.date-chip{
+background:white;
+border:1px solid var(--border);
+padding:9px 13px;
+border-radius:9px;
+font-size:10px;
+color:#68788D;
+}
+
+/* STAT CARDS */
+.stats{
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:15px;
+margin-bottom:20px;
+}
+.stat{
+background:white;
+border:1px solid var(--border);
+border-radius:14px;
+padding:17px;
+box-shadow:var(--shadow);
+}
+.stat-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+.stat-label{
+font-size:11px;
+color:var(--muted);
+font-weight:600;
+}
+.stat-icon{
+width:37px;height:37px;
+border-radius:10px;
+display:grid;
+place-items:center;
+font-size:17px;
+}
+.stat-value{
+font-size:29px;
+font-weight:800;
+margin-top:10px;
+color:var(--primary);
+}
+.stat-foot{
+font-size:9px;
+color:var(--muted);
+margin-top:3px;
+}
+.icon-blue{background:#E9F2FC;color:#3478B9}
+.icon-green{background:#E6F4ED;color:#23936D}
+.icon-red{background:#FBEAEC;color:#CF5D65}
+.icon-orange{background:#FFF2DF;color:#C58A2E}
+
+/* PANELS */
+.grid-main{
+display:grid;
+grid-template-columns:1.5fr .9fr;
+gap:17px;
+margin-bottom:18px;
+}
+.panel{
+background:white;
+border:1px solid var(--border);
+border-radius:14px;
+padding:19px;
+box-shadow:var(--shadow);
+}
+.panel-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-bottom:17px;
+}
+.panel-title{font-size:13px;font-weight:800;color:var(--primary)}
+.panel-sub{font-size:9px;color:var(--muted);margin-top:3px}
+.link-btn{
+border:0;background:transparent;
+color:var(--secondary);
+font-size:10px;font-weight:700;
+}
+.chart{
+height:190px;
+display:flex;
+align-items:flex-end;
+justify-content:space-around;
+gap:12px;
+border-bottom:1px solid var(--border);
+background:repeating-linear-gradient(
+to top,transparent 0,transparent 46px,#F0F3F7 47px
+);
+}
+.chart-col{
+height:100%;
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-end;
+}
+.bar-wrap{
+height:155px;
+width:100%;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:4px;
+}
+.bar{
+width:min(23px,35%);
+border-radius:5px 5px 0 0;
+background:#DCE5F0;
+}
+.bar.present{
+background:linear-gradient(180deg,#5D9DD8,#3478B9);
+}
+.day{font-size:9px;color:var(--muted);padding:9px 0}
+.legend{
+display:flex;gap:15px;
+margin-top:13px;
+font-size:9px;color:var(--muted);
+}
+.dot{width:7px;height:7px;border-radius:50%;background:#3478B9;display:inline-block}
+.dot.gray{background:#DCE5F0}
+
+/* REQUESTS */
+.review-list{display:grid;gap:10px}
+.review-item{
+display:flex;align-items:center;gap:10px;
+padding:11px 9px;
+border:1px solid #EEF1F5;
+border-radius:10px;
+}
+.review-icon{
+width:36px;height:36px;
+border-radius:10px;
+background:#E9F2FC;
+color:#3478B9;
+display:grid;place-items:center;
+font-size:16px;
+flex-shrink:0;
+}
+.review-text{flex:1}
+.review-text strong{display:block;font-size:10px}
+.review-text small{font-size:9px;color:var(--muted)}
+.review-count{
+font-size:9px;font-weight:800;
+color:var(--primary);
+background:#E9F2FC;
+border-radius:20px;
+padding:5px 8px;
+white-space:nowrap;
+}
+
+/* TABLE */
+.bottom-grid{
+display:grid;
+grid-template-columns:1.3fr .8fr;
+gap:17px;
+}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;white-space:nowrap}
+th{
+text-align:right;
+color:var(--muted);
+font-size:9px;
+padding:10px 8px;
+border-bottom:1px solid var(--border);
+}
+td{
+padding:12px 8px;
+border-bottom:1px solid #F0F2F5;
+font-size:10px;
+color:#465368;
+}
+.employee-cell{display:flex;align-items:center;gap:8px}
+.mini-avatar{
+width:28px;height:28px;
+border-radius:8px;
+background:#E9F2FC;
+display:grid;place-items:center;
+color:var(--primary);
+font-weight:700;
+}
+.status{
+display:inline-flex;
+padding:4px 8px;
+border-radius:20px;
+font-size:9px;
+font-weight:700;
+}
+.status.ok{background:#E8F5EF;color:#27815F}
+.status.late{background:#FFF3DF;color:#B77B21}
+.status.absent{background:#FCEBED;color:#C3545A}
+.contract{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px solid #F0F2F5;
+}
+.contract strong{display:block;font-size:10px}
+.contract small{font-size:9px;color:var(--muted)}
+.days-left{
+font-size:9px;color:#B77B21;
+background:#FFF4E2;padding:5px 8px;
+border-radius:7px;
+}
+
+/* PLACEHOLDER PAGES */
+.page-placeholder{
+display:none;
+background:white;
+border:1px solid var(--border);
+border-radius:14px;
+padding:35px;
+min-height:330px;
+box-shadow:var(--shadow);
+}
+.page-placeholder h2{color:var(--primary);font-size:20px}
+.page-placeholder p{color:var(--muted);font-size:12px}
+.placeholder-icon{
+width:65px;height:65px;
+border-radius:18px;
+background:var(--blue-light);
+color:var(--secondary);
+display:grid;place-items:center;
+font-size:28px;
+margin-bottom:15px;
+}
+
+/* COLLAPSED */
+.sidebar.collapsed{width:78px;padding-inline:10px}
+.sidebar.collapsed .brand-name,
+.sidebar.collapsed .brand-sub,
+.sidebar.collapsed .nav-label,
+.sidebar.collapsed .nav-text,
+.sidebar.collapsed .sidebar-footer{display:none}
+.sidebar.collapsed .brand{justify-content:center;padding-inline:0}
+.sidebar.collapsed .nav button{justify-content:center;padding:12px 5px}
+.main.expanded{margin-right:78px}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+.stats{grid-template-columns:repeat(2,1fr)}
+.grid-main,.bottom-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+.sidebar{
+width:260px;
+transform:translateX(100%);
+box-shadow:-10px 0 30px #101a2b30;
+}
+.sidebar.mobile-open{transform:translateX(0)}
+.main,.main.expanded{margin-right:0}
+.topbar{height:65px;padding:0 13px}
+.content{padding:20px 13px 30px}
+.welcome{align-items:flex-start;flex-direction:column}
+.welcome h1{font-size:20px}
+.top-date{display:none}
+.user{padding-right:8px;gap:6px}
+.user-name{font-size:10px}
+.stats{gap:10px}
+.stat{padding:13px}
+.stat-value{font-size:25px}
+.panel{padding:14px}
+.chart{gap:5px}
+}
+@media(max-width:380px){
+.stat-label{font-size:9px}
+.stat-value{font-size:22px}
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="brand">
+<div class="brand-logo">HR</div>
+<div>
+<div class="brand-name">HR SYSTEM</div>
+<div class="brand-sub">HUMAN RESOURCES MANAGEMENT</div>
+</div>
+</div>
+
+<div class="nav-label">القائمة الرئيسية</div>
+<nav class="nav" id="mainNav">
+<button class="active" data-page="dashboard"><span class="nav-icon">▦</span><span class="nav-text">لوحة التحكم</span></button>
+<button data-page="employees"><span class="nav-icon">♙</span><span class="nav-text">إدارة الموظفين</span></button>
+<button data-page="attendance"><span class="nav-icon">◷</span><span class="nav-text">الحضور والانصراف</span></button>
+<button data-page="leaves"><span class="nav-icon">▤</span><span class="nav-text">الإجازات والأذونات</span></button>
+<button data-page="payroll"><span class="nav-icon">＄</span><span class="nav-text">الرواتب والأجور</span></button>
+<button data-page="rewards"><span class="nav-icon">✧</span><span class="nav-text">الجزاءات والمكافآت</span></button>
+<button data-page="performance"><span class="nav-icon">▥</span><span class="nav-text">تقييم الأداء</span></button>
+</nav>
+
+<div class="nav-label">الإدارة والتقارير</div>
+<nav class="nav">
+<button data-page="departments"><span class="nav-icon">⌂</span><span class="nav-text">الأقسام والوظائف</span></button>
+<button data-page="shifts"><span class="nav-icon">◴</span><span class="nav-text">الورديات ومواعيد العمل</span></button>
+<button data-page="reports"><span class="nav-icon">▧</span><span class="nav-text">التقارير والإحصائيات</span></button>
+<button data-page="users"><span class="nav-icon">⚙</span><span class="nav-text">المستخدمون والصلاحيات</span></button>
+<button data-page="settings"><span class="nav-icon">☷</span><span class="nav-text">إعدادات الشركة</span></button>
+</nav>
+
+<div class="sidebar-footer">
+<strong>HR SYSTEM</strong>
+نظام إدارة الموارد البشرية<br>
+إصدار تجريبي
+</div>
+</aside>
+
+<!-- MAIN -->
+<main class="main" id="main">
+
+<header class="topbar">
+<div class="top-right">
+<button class="menu-btn" id="menuBtn">☰</button>
+<div class="breadcrumb">الرئيسية / <strong id="breadcrumb">لوحة التحكم</strong></div>
+</div>
+<div class="top-left">
+<div class="top-date" id="todayDate"></div>
+<div class="user">
+<div class="avatar">HR</div>
+<div>
+<div class="user-name">مدير النظام</div>
+<div class="user-role">مدير الموارد البشرية</div>
+</div>
+</div>
+</div>
+</header>
+
+<section class="content">
+
+<!-- DASHBOARD -->
+<div id="dashboardPage">
+
+<div class="welcome">
+<div>
+<h1>لوحة التحكم</h1>
+<p>نظرة عامة على مؤشرات الموارد البشرية وحالة الموظفين اليوم</p>
+</div>
+<div class="date-chip" id="dateChip"></div>
+</div>
+
+<!-- STATISTICS -->
+<div class="stats">
+
+<article class="stat">
+<div class="stat-top">
+<span class="stat-label">إجمالي الموظفين</span>
+<span class="stat-icon icon-blue">♙</span>
+</div>
+<div class="stat-value">250</div>
+<div class="stat-foot">إجمالي العاملين بالشركة</div>
+</article>
+
+<article class="stat">
+<div class="stat-top">
+<span class="stat-label">حاضر اليوم</span>
+<span class="stat-icon icon-green">✓</span>
+</div>
+<div class="stat-value">218</div>
+<div class="stat-foot">من إجمالي الموظفين</div>
+</article>
+
+<article class="stat">
+<div class="stat-top">
+<span class="stat-label">غياب اليوم</span>
+<span class="stat-icon icon-red">×</span>
+</div>
+<div class="stat-value">12</div>
+<div class="stat-foot">موظف غير مسجل حضوره</div>
+</article>
+
+<article class="stat">
+<div class="stat-top">
+<span class="stat-label">تأخير اليوم</span>
+<span class="stat-icon icon-orange">◷</span>
+</div>
+<div class="stat-value">20</div>
+<div class="stat-foot">موظف تجاوز موعد الحضور</div>
+</article>
+
+</div>
+
+<!-- CHART + REQUESTS -->
+<div class="grid-main">
+
+<section class="panel">
+<div class="panel-head">
+<div>
+<div class="panel-title">معدل الحضور خلال الأسبوع</div>
+<div class="panel-sub">نسبة الحضور اليومية مقارنة بإجمالي الموظفين</div>
+</div>
+<button class="link-btn" data-goto="reports">عرض التقرير</button>
+</div>
+
+<div class="chart">
+<div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:86%"></div><div class="bar" style="height:14%"></div></div><div class="day">السبت</div></div>
+<div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:91%"></div><div class="bar" style="height:9%"></div></div><div class="day">الأحد</div></div>
+<div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:88%"></div><div class="bar" style="height:12%"></div></div><div class="day">الإثنين</div></div>
+<div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:94%"></div><div class="bar" style="height:6%"></div></div><div class="day">الثلاثاء</div></div>
+<div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:87%"></div><div class="bar" style="height:13%"></div></div><div class="day">الأربعاء</div></div>
+<div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:90%"></div><div class="bar" style="height:10%"></div></div><div class="day">الخميس</div></div>
+</div>
+
+<div class="legend">
+<span><i class="dot"></i> حضور</span>
+<span><i class="dot gray"></i> غياب / عدم تسجيل</span>
+</div>
+</section>
+
+<section class="panel">
+<div class="panel-head">
+<div>
+<div class="panel-title">طلبات تحتاج مراجعة</div>
+<div class="panel-sub">طلبات تنتظر إجراء من الإدارة</div>
+</div>
+<span style="font-size:10px;color:var(--secondary)">10 طلبات</span>
+</div>
+
+<div class="review-list">
+<div class="review-item">
+<div class="review-icon">▤</div>
+<div class="review-text"><strong>طلبات إجازة جديدة</strong><small>تحتاج مراجعة واعتماد</small></div>
+<span class="review-count">5 طلبات</span>
+</div>
+<div class="review-item">
+<div class="review-icon">◷</div>
+<div class="review-text"><strong>طلبات أذونات</strong><small>طلبات خروج أو تأخير</small></div>
+<span class="review-count">3 طلبات</span>
+</div>
+<div class="review-item">
+<div class="review-icon">▣</div>
+<div class="review-text"><strong>عقود قاربت على الانتهاء</strong><small>يرجى مراجعة موقف العقود</small></div>
+<span class="review-count">2 عقد</span>
+</div>
+</div>
+</section>
+</div>
+
+<!-- TABLES -->
+<div class="bottom-grid">
+
+<section class="panel">
+<div class="panel-head">
+<div>
+<div class="panel-title">آخر حركات الحضور</div>
+<div class="panel-sub">عينة توضيحية لسجل الحضور اليوم</div>
+</div>
+<button class="link-btn" data-goto="attendance">عرض الكل</button>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>الموظف</th><th>القسم</th><th>وقت الحضور</th><th>الحالة</th></tr>
+</thead>
+<tbody>
+<tr><td><div class="employee-cell"><span class="mini-avatar">م</span>محمد أحمد</div></td><td>المخازن</td><td>08:55 ص</td><td><span class="status ok">حاضر</span></td></tr>
+<tr><td><div class="employee-cell"><span class="mini-avatar">س</span>سارة محمود</div></td><td>المبيعات</td><td>09:18 ص</td><td><span class="status late">متأخر</span></td></tr>
+<tr><td><div class="employee-cell"><span class="mini-avatar">أ</span>أحمد علي</div></td><td>الحسابات</td><td>08:47 ص</td><td><span class="status ok">حاضر</span></td></tr>
+<tr><td><div class="employee-cell"><span class="mini-avatar">ن</span>نور حسن</div></td><td>الموارد البشرية</td><td>—</td><td><span class="status absent">غائب</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="panel">
+<div class="panel-head">
+<div>
+<div class="panel-title">تنبيهات العقود</div>
+<div class="panel-sub">عقود تحتاج متابعة قريبة</div>
+</div>
+<button class="link-btn" data-goto="employees">ملفات الموظفين</button>
+</div>
+
+<div class="contract">
+<div><strong>محمد إبراهيم</strong><small>مسؤول مخازن · عقد عمل</small></div>
+<span class="days-left">متبقي 12 يوم</span>
+</div>
+<div class="contract">
+<div><strong>سلمى خالد</strong><small>أخصائي مبيعات · عقد عمل</small></div>
+<span class="days-left">متبقي 24 يوم</span>
+</div>
+<div class="contract">
+<div><strong>تنبيه</strong><small>مدة التنبيه قابلة للتعديل من الإعدادات</small></div>
+</div>
+</section>
+
+</div>
+
+<p style="font-size:9px;color:#9AA3AF;text-align:center;margin-top:22px">
+الأرقام والموظفون المعروضون بيانات تجريبية لتوضيح شكل التصميم وليست بيانات حقيقية.
+</p>
+</div>
+
+<!-- OTHER PAGES -->
+<div class="page-placeholder" id="placeholder">
+<div class="placeholder-icon">✦</div>
+<h2 id="placeholderTitle">القسم</h2>
+<p id="placeholderText">سيتم بناء هذه الصفحة وربطها بباقي وحدات نظام HR SYSTEM في مراحل التنفيذ التالية.</p>
+<div style="margin-top:22px;padding:15px;background:#F5F8FC;border-radius:10px;color:#7C8796;font-size:11px">
+الهيكل الأساسي جاهز — هذه الصفحة ضمن خطة التطوير.
+</div>
+</div>
+
+</section>
+</main>
+</div>
+
+<script>
+const pageNames={
+dashboard:"لوحة التحكم",
+employees:"إدارة الموظفين",
+attendance:"الحضور والانصراف",
+leaves:"الإجازات والأذونات",
+payroll:"الرواتب والأجور",
+rewards:"الجزاءات والمكافآت",
+performance:"تقييم الأداء",
+departments:"الأقسام والوظائف",
+shifts:"الورديات ومواعيد العمل",
+reports:"التقارير والإحصائيات",
+users:"المستخدمون والصلاحيات",
+settings:"إعدادات الشركة"
+};
+
+const sidebar=document.getElementById("sidebar");
+const main=document.getElementById("main");
+const dashboard=document.getElementById("dashboardPage");
+const placeholder=document.getElementById("placeholder");
+
+function openPage(page){
+document.querySelectorAll("[data-page]").forEach(button=>{
+button.classList.toggle("active",button.dataset.page===page);
+});
+
+document.getElementById("breadcrumb").textContent=pageNames[page]||"لوحة التحكم";
+
+dashboard.style.display=page==="dashboard"?"block":"none";
+placeholder.style.display=page==="dashboard"?"none":"block";
+
+document.getElementById("placeholderTitle").textContent=pageNames[page]||"القسم";
+document.getElementById("placeholderText").textContent=
+page==="dashboard"?"":"سيتم بناء صفحة "+pageNames[page]+" وربطها بباقي وحدات نظام HR SYSTEM في مراحل التطوير القادمة.";
+
+if(window.innerWidth<=700){
+sidebar.classList.remove("mobile-open");
+}
+}
+
+document.querySelectorAll("[data-page]").forEach(button=>{
+button.addEventListener("click",()=>openPage(button.dataset.page));
+});
+
+document.querySelectorAll("[data-goto]").forEach(button=>{
+button.addEventListener("click",()=>openPage(button.dataset.goto));
+});
+
+document.getElementById("menuBtn").addEventListener("click",()=>{
+if(window.innerWidth<=700){
+sidebar.classList.toggle("mobile-open");
+}else{
+sidebar.classList.toggle("collapsed");
+main.classList.toggle("expanded");
+}
+});
+
+const now=new Date();
+const dateText=new Intl.DateTimeFormat("ar-EG",{
+weekday:"long",
+year:"numeric",
+month:"long",
+day:"numeric"
+}).format(now);
+
+document.getElementById("todayDate").textContent=dateText;
+document.getElementById("dateChip").textContent=dateText;
+</script>
+</body>
+</html>
