@@ -14,7 +14,7 @@
 --secondary:#3478B9;
 --blue-light:#E9F2FC;
 --bg:#EEF2F7;
---white:#FFFFFF;
+--white:#fff;
 --text:#243247;
 --muted:#8491A3;
 --border:#E6EBF1;
@@ -24,414 +24,173 @@
 --shadow:0 7px 25px rgba(23,59,103,.06);
 }
 *{box-sizing:border-box}
-body{
-margin:0;
-font-family:'Cairo',sans-serif;
-background:var(--bg);
-color:var(--text);
-}
-button{font-family:inherit;cursor:pointer}
+body{margin:0;font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text)}
+button,input,select{font-family:inherit}
+button{cursor:pointer}
 .app{min-height:100vh}
 
 /* SIDEBAR */
 .sidebar{
-position:fixed;
-right:0;top:0;bottom:0;
-width:260px;
-background:var(--primary);
-color:white;
-padding:22px 15px;
-display:flex;
-flex-direction:column;
-z-index:100;
-overflow-y:auto;
-transition:.25s;
+position:fixed;right:0;top:0;bottom:0;width:260px;
+background:var(--primary);color:white;padding:22px 15px;
+display:flex;flex-direction:column;z-index:100;
+overflow-y:auto;transition:.25s
 }
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
-padding:5px 9px 25px;
-border-bottom:1px solid #ffffff20;
-}
-.brand-logo{
-width:43px;height:43px;
-background:white;
-color:var(--primary);
-border-radius:12px;
-display:grid;
-place-items:center;
-font-weight:800;
-font-size:19px;
-}
+.brand{display:flex;align-items:center;gap:12px;padding:5px 9px 25px;border-bottom:1px solid #ffffff20}
+.brand-logo{width:43px;height:43px;background:white;color:var(--primary);border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:19px}
 .brand-name{font-size:18px;font-weight:800}
 .brand-sub{font-size:9px;color:#C5D5E8}
-.nav-label{
-font-size:10px;
-color:#A9BCD2;
-padding:22px 12px 9px;
-}
+.nav-label{font-size:10px;color:#A9BCD2;padding:22px 12px 9px}
 .nav{display:grid;gap:5px}
 .nav button{
-border:0;
-background:transparent;
-color:#D3DFEC;
-text-align:right;
-padding:11px 13px;
-border-radius:9px;
-display:flex;
-align-items:center;
-gap:12px;
-font-size:12px;
-transition:.2s;
-width:100%;
+border:0;background:transparent;color:#D3DFEC;text-align:right;
+padding:11px 13px;border-radius:9px;display:flex;align-items:center;
+gap:12px;font-size:12px;transition:.2s;width:100%
 }
 .nav button:hover{background:#ffffff16;color:white}
-.nav button.active{
-background:var(--secondary);
-color:white;
-box-shadow:inset -3px 0 #fff;
-}
+.nav button.active{background:var(--secondary);color:white;box-shadow:inset -3px 0 #fff}
 .nav-icon{width:22px;text-align:center;font-size:17px}
-.sidebar-footer{
-margin-top:auto;
-padding:18px 10px 5px;
-border-top:1px solid #ffffff20;
-font-size:10px;
-color:#B4C5D8;
-line-height:2;
-}
-.sidebar-footer strong{
-display:block;color:white;font-size:12px;
-}
+.sidebar-footer{margin-top:auto;padding:18px 10px 5px;border-top:1px solid #ffffff20;font-size:10px;color:#B4C5D8;line-height:2}
+.sidebar-footer strong{display:block;color:white;font-size:12px}
 
 /* MAIN */
-.main{
-margin-right:260px;
-min-height:100vh;
-transition:.25s;
-}
+.main{margin-right:260px;min-height:100vh;transition:.25s}
 .topbar{
-height:75px;
-background:white;
-border-bottom:1px solid var(--border);
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 28px;
-position:sticky;
-top:0;
-z-index:50;
+height:75px;background:white;border-bottom:1px solid var(--border);
+display:flex;align-items:center;justify-content:space-between;
+padding:0 28px;position:sticky;top:0;z-index:50
 }
-.top-right,.top-left{
-display:flex;align-items:center;gap:14px;
-}
-.menu-btn{
-border:0;background:#EEF2F7;
-border-radius:9px;
-width:39px;height:39px;
-color:var(--primary);
-font-size:19px;
-}
+.top-right,.top-left{display:flex;align-items:center;gap:14px}
+.menu-btn{border:0;background:#EEF2F7;border-radius:9px;width:39px;height:39px;color:var(--primary);font-size:19px}
 .breadcrumb{font-size:12px;color:var(--muted)}
 .breadcrumb strong{color:var(--primary)}
-.user{
-display:flex;align-items:center;gap:10px;
-border-right:1px solid var(--border);
-padding-right:15px;
-}
-.avatar{
-width:38px;height:38px;
-border-radius:50%;
-display:grid;place-items:center;
-background:var(--blue-light);
-color:var(--primary);
-font-weight:800;
-}
+.user{display:flex;align-items:center;gap:10px;border-right:1px solid var(--border);padding-right:15px}
+.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--blue-light);color:var(--primary);font-weight:800}
 .user-name{font-size:11px;font-weight:800}
 .user-role{font-size:9px;color:var(--muted)}
 .top-date{font-size:10px;color:var(--muted)}
+.content{padding:27px 28px 40px;max-width:1600px;margin:auto}
 
-/* CONTENT */
-.content{
-padding:27px 28px 40px;
-max-width:1600px;
-margin:auto;
-}
-.welcome{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:23px;
-gap:10px;
-}
-.welcome h1{
-margin:0;
-font-size:23px;
-font-weight:800;
-color:var(--primary);
-}
-.welcome p{
-margin:5px 0 0;
-font-size:11px;
-color:var(--muted);
-}
-.date-chip{
-background:white;
-border:1px solid var(--border);
-padding:9px 13px;
-border-radius:9px;
-font-size:10px;
-color:#68788D;
-}
-
-/* STAT CARDS */
-.stats{
-display:grid;
-grid-template-columns:repeat(4,minmax(0,1fr));
-gap:15px;
-margin-bottom:20px;
-}
-.stat{
-background:white;
-border:1px solid var(--border);
-border-radius:14px;
-padding:17px;
-box-shadow:var(--shadow);
-}
-.stat-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-.stat-label{
-font-size:11px;
-color:var(--muted);
-font-weight:600;
-}
-.stat-icon{
-width:37px;height:37px;
-border-radius:10px;
-display:grid;
-place-items:center;
-font-size:17px;
-}
-.stat-value{
-font-size:29px;
-font-weight:800;
-margin-top:10px;
-color:var(--primary);
-}
-.stat-foot{
-font-size:9px;
-color:var(--muted);
-margin-top:3px;
-}
+/* COMMON */
+.welcome{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px;gap:10px}
+.welcome h1{margin:0;font-size:23px;font-weight:800;color:var(--primary)}
+.welcome p{margin:5px 0 0;font-size:11px;color:var(--muted)}
+.date-chip{background:white;border:1px solid var(--border);padding:9px 13px;border-radius:9px;font-size:10px;color:#68788D}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:20px}
+.stat{background:white;border:1px solid var(--border);border-radius:14px;padding:17px;box-shadow:var(--shadow)}
+.stat-top{display:flex;justify-content:space-between;align-items:center}
+.stat-label{font-size:11px;color:var(--muted);font-weight:600}
+.stat-icon{width:37px;height:37px;border-radius:10px;display:grid;place-items:center;font-size:17px}
+.stat-value{font-size:29px;font-weight:800;margin-top:10px;color:var(--primary)}
+.stat-foot{font-size:9px;color:var(--muted);margin-top:3px}
 .icon-blue{background:#E9F2FC;color:#3478B9}
 .icon-green{background:#E6F4ED;color:#23936D}
 .icon-red{background:#FBEAEC;color:#CF5D65}
 .icon-orange{background:#FFF2DF;color:#C58A2E}
-
-/* PANELS */
-.grid-main{
-display:grid;
-grid-template-columns:1.5fr .9fr;
-gap:17px;
-margin-bottom:18px;
-}
-.panel{
-background:white;
-border:1px solid var(--border);
-border-radius:14px;
-padding:19px;
-box-shadow:var(--shadow);
-}
-.panel-head{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-margin-bottom:17px;
-}
+.grid-main{display:grid;grid-template-columns:1.5fr .9fr;gap:17px;margin-bottom:18px}
+.panel{background:white;border:1px solid var(--border);border-radius:14px;padding:19px;box-shadow:var(--shadow)}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:17px}
 .panel-title{font-size:13px;font-weight:800;color:var(--primary)}
 .panel-sub{font-size:9px;color:var(--muted);margin-top:3px}
-.link-btn{
-border:0;background:transparent;
-color:var(--secondary);
-font-size:10px;font-weight:700;
-}
-.chart{
-height:190px;
-display:flex;
-align-items:flex-end;
-justify-content:space-around;
-gap:12px;
-border-bottom:1px solid var(--border);
-background:repeating-linear-gradient(
-to top,transparent 0,transparent 46px,#F0F3F7 47px
-);
-}
-.chart-col{
-height:100%;
-flex:1;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:flex-end;
-}
-.bar-wrap{
-height:155px;
-width:100%;
-display:flex;
-align-items:flex-end;
-justify-content:center;
-gap:4px;
-}
-.bar{
-width:min(23px,35%);
-border-radius:5px 5px 0 0;
-background:#DCE5F0;
-}
-.bar.present{
-background:linear-gradient(180deg,#5D9DD8,#3478B9);
-}
+.link-btn{border:0;background:transparent;color:var(--secondary);font-size:10px;font-weight:700}
+.chart{height:190px;display:flex;align-items:flex-end;justify-content:space-around;gap:12px;border-bottom:1px solid var(--border);background:repeating-linear-gradient(to top,transparent 0,transparent 46px,#F0F3F7 47px)}
+.chart-col{height:100%;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.bar-wrap{height:155px;width:100%;display:flex;align-items:flex-end;justify-content:center;gap:4px}
+.bar{width:min(23px,35%);border-radius:5px 5px 0 0;background:#DCE5F0}
+.bar.present{background:linear-gradient(180deg,#5D9DD8,#3478B9)}
 .day{font-size:9px;color:var(--muted);padding:9px 0}
-.legend{
-display:flex;gap:15px;
-margin-top:13px;
-font-size:9px;color:var(--muted);
-}
+.legend{display:flex;gap:15px;margin-top:13px;font-size:9px;color:var(--muted)}
 .dot{width:7px;height:7px;border-radius:50%;background:#3478B9;display:inline-block}
 .dot.gray{background:#DCE5F0}
-
-/* REQUESTS */
 .review-list{display:grid;gap:10px}
-.review-item{
-display:flex;align-items:center;gap:10px;
-padding:11px 9px;
-border:1px solid #EEF1F5;
-border-radius:10px;
-}
-.review-icon{
-width:36px;height:36px;
-border-radius:10px;
-background:#E9F2FC;
-color:#3478B9;
-display:grid;place-items:center;
-font-size:16px;
-flex-shrink:0;
-}
+.review-item{display:flex;align-items:center;gap:10px;padding:11px 9px;border:1px solid #EEF1F5;border-radius:10px}
+.review-icon{width:36px;height:36px;border-radius:10px;background:#E9F2FC;color:#3478B9;display:grid;place-items:center;font-size:16px;flex-shrink:0}
 .review-text{flex:1}
 .review-text strong{display:block;font-size:10px}
 .review-text small{font-size:9px;color:var(--muted)}
-.review-count{
-font-size:9px;font-weight:800;
-color:var(--primary);
-background:#E9F2FC;
-border-radius:20px;
-padding:5px 8px;
-white-space:nowrap;
-}
-
-/* TABLE */
-.bottom-grid{
-display:grid;
-grid-template-columns:1.3fr .8fr;
-gap:17px;
-}
+.review-count{font-size:9px;font-weight:800;color:var(--primary);background:#E9F2FC;border-radius:20px;padding:5px 8px;white-space:nowrap}
+.bottom-grid{display:grid;grid-template-columns:1.3fr .8fr;gap:17px}
 .table-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;white-space:nowrap}
-th{
-text-align:right;
-color:var(--muted);
-font-size:9px;
-padding:10px 8px;
-border-bottom:1px solid var(--border);
-}
-td{
-padding:12px 8px;
-border-bottom:1px solid #F0F2F5;
-font-size:10px;
-color:#465368;
-}
+th{text-align:right;color:var(--muted);font-size:9px;padding:10px 8px;border-bottom:1px solid var(--border)}
+td{padding:12px 8px;border-bottom:1px solid #F0F2F5;font-size:10px;color:#465368}
 .employee-cell{display:flex;align-items:center;gap:8px}
-.mini-avatar{
-width:28px;height:28px;
-border-radius:8px;
-background:#E9F2FC;
-display:grid;place-items:center;
-color:var(--primary);
-font-weight:700;
-}
-.status{
-display:inline-flex;
-padding:4px 8px;
-border-radius:20px;
-font-size:9px;
-font-weight:700;
-}
+.mini-avatar{width:28px;height:28px;border-radius:8px;background:#E9F2FC;display:grid;place-items:center;color:var(--primary);font-weight:700}
+.status{display:inline-flex;padding:4px 8px;border-radius:20px;font-size:9px;font-weight:700}
 .status.ok{background:#E8F5EF;color:#27815F}
 .status.late{background:#FFF3DF;color:#B77B21}
 .status.absent{background:#FCEBED;color:#C3545A}
-.contract{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:12px 0;
-border-bottom:1px solid #F0F2F5;
-}
+.contract{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #F0F2F5}
 .contract strong{display:block;font-size:10px}
 .contract small{font-size:9px;color:var(--muted)}
-.days-left{
-font-size:9px;color:#B77B21;
-background:#FFF4E2;padding:5px 8px;
-border-radius:7px;
-}
+.days-left{font-size:9px;color:#B77B21;background:#FFF4E2;padding:5px 8px;border-radius:7px}
 
-/* PLACEHOLDER PAGES */
-.page-placeholder{
-display:none;
-background:white;
-border:1px solid var(--border);
-border-radius:14px;
-padding:35px;
-min-height:330px;
-box-shadow:var(--shadow);
+/* APP PAGES */
+.app-page{display:none}
+.page-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.page-heading h1{font-size:22px;color:var(--primary);margin:0;font-weight:800}
+.page-heading p{font-size:11px;color:var(--muted);margin:5px 0 0}
+.btn{border:0;border-radius:9px;padding:10px 17px;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.btn-primary{background:var(--secondary);color:white}
+.btn-primary:hover{background:var(--primary)}
+.btn-light{background:#E9F2FC;color:var(--primary)}
+.btn-danger{background:#FCEBED;color:#C3545A}
+.btn-success{background:#E8F5EF;color:#27815F}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.card{background:white;border:1px solid var(--border);border-radius:14px;padding:19px;box-shadow:var(--shadow);margin-bottom:17px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}
+.field-search{flex:1;min-width:200px}
+input,select{
+width:100%;border:1px solid #DCE3EC;border-radius:9px;padding:11px 12px;
+font-size:11px;background:#fff;color:var(--text);outline:none
 }
+input:focus,select:focus{border-color:var(--secondary);box-shadow:0 0 0 3px #3478B915}
+label{display:block;font-size:10px;font-weight:700;color:#59687C;margin-bottom:7px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.form-group{min-width:0}
+.form-group.full{grid-column:1/-1}
+.form-section-title{font-size:13px;font-weight:800;color:var(--primary);margin:4px 0 15px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.form-actions{display:flex;gap:9px;justify-content:flex-start;flex-wrap:wrap;margin-top:22px}
+.hint{font-size:9px;color:var(--muted);margin-top:5px;line-height:1.8}
+.empty-state{text-align:center;padding:45px 15px;color:var(--muted);font-size:12px}
+.empty-state strong{display:block;color:var(--primary);font-size:15px;margin-bottom:7px}
+.action-buttons{display:flex;gap:5px}
+.small-btn{border:0;border-radius:7px;padding:6px 9px;font-size:9px;font-weight:700}
+.employee-name{font-weight:800;color:var(--primary)}
+.money{font-weight:800;color:var(--primary);direction:ltr;display:inline-block}
+.increase-box{background:#F1F7FD;border:1px solid #DDEAF8;padding:15px;border-radius:11px}
+.increase-result{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.result-item{background:white;border-radius:9px;padding:12px}
+.result-item small{display:block;color:var(--muted);font-size:9px}
+.result-item strong{display:block;color:var(--primary);font-size:15px;margin-top:5px}
+.tag{display:inline-block;border-radius:20px;padding:4px 8px;font-size:9px;font-weight:700}
+.tag-green{background:#E8F5EF;color:#27815F}
+.tag-orange{background:#FFF3DF;color:#B77B21}
+.tag-red{background:#FCEBED;color:#C3545A}
+.tag-blue{background:#E9F2FC;color:#3478B9}
+.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.profile-item{padding:12px;background:#F7F9FC;border-radius:9px}
+.profile-item small{display:block;color:var(--muted);font-size:9px}
+.profile-item strong{display:block;color:var(--primary);font-size:12px;margin-top:5px}
+.back-link{border:0;background:transparent;color:var(--secondary);font-size:11px;font-weight:700;margin-bottom:15px}
+.notice{padding:12px 14px;border-radius:9px;background:#FFF6E7;color:#9A6B1C;font-size:10px;line-height:1.9;margin-bottom:15px}
+hr{border:0;border-top:1px solid var(--border);margin:18px 0}
+.page-placeholder{display:none;background:white;border:1px solid var(--border);border-radius:14px;padding:35px;min-height:330px;box-shadow:var(--shadow)}
 .page-placeholder h2{color:var(--primary);font-size:20px}
 .page-placeholder p{color:var(--muted);font-size:12px}
-.placeholder-icon{
-width:65px;height:65px;
-border-radius:18px;
-background:var(--blue-light);
-color:var(--secondary);
-display:grid;place-items:center;
-font-size:28px;
-margin-bottom:15px;
-}
-
-/* COLLAPSED */
+.placeholder-icon{width:65px;height:65px;border-radius:18px;background:var(--blue-light);color:var(--secondary);display:grid;place-items:center;font-size:28px;margin-bottom:15px}
 .sidebar.collapsed{width:78px;padding-inline:10px}
-.sidebar.collapsed .brand-name,
-.sidebar.collapsed .brand-sub,
-.sidebar.collapsed .nav-label,
-.sidebar.collapsed .nav-text,
-.sidebar.collapsed .sidebar-footer{display:none}
+.sidebar.collapsed .brand-name,.sidebar.collapsed .brand-sub,.sidebar.collapsed .nav-label,.sidebar.collapsed .nav-text,.sidebar.collapsed .sidebar-footer{display:none}
 .sidebar.collapsed .brand{justify-content:center;padding-inline:0}
 .sidebar.collapsed .nav button{justify-content:center;padding:12px 5px}
 .main.expanded{margin-right:78px}
 
-/* RESPONSIVE */
 @media(max-width:1050px){
 .stats{grid-template-columns:repeat(2,1fr)}
 .grid-main,.bottom-grid{grid-template-columns:1fr}
 }
 @media(max-width:700px){
-.sidebar{
-width:260px;
-transform:translateX(100%);
-box-shadow:-10px 0 30px #101a2b30;
-}
+.sidebar{width:260px;transform:translateX(100%);box-shadow:-10px 0 30px #101a2b30}
 .sidebar.mobile-open{transform:translateX(0)}
 .main,.main.expanded{margin-right:0}
 .topbar{height:65px;padding:0 13px}
@@ -446,6 +205,11 @@ box-shadow:-10px 0 30px #101a2b30;
 .stat-value{font-size:25px}
 .panel{padding:14px}
 .chart{gap:5px}
+.form-grid{grid-template-columns:1fr}
+.form-group.full{grid-column:auto}
+.profile-grid{grid-template-columns:repeat(2,1fr)}
+.increase-result{grid-template-columns:1fr}
+.page-heading h1{font-size:19px}
 }
 @media(max-width:380px){
 .stat-label{font-size:9px}
@@ -457,7 +221,6 @@ box-shadow:-10px 0 30px #101a2b30;
 <body>
 <div class="app">
 
-<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
 <div class="brand">
 <div class="brand-logo">HR</div>
@@ -474,6 +237,7 @@ box-shadow:-10px 0 30px #101a2b30;
 <button data-page="attendance"><span class="nav-icon">◷</span><span class="nav-text">الحضور والانصراف</span></button>
 <button data-page="leaves"><span class="nav-icon">▤</span><span class="nav-text">الإجازات والأذونات</span></button>
 <button data-page="payroll"><span class="nav-icon">＄</span><span class="nav-text">الرواتب والأجور</span></button>
+<button data-page="raises"><span class="nav-icon">↗</span><span class="nav-text">الزيادات السنوية</span></button>
 <button data-page="rewards"><span class="nav-icon">✧</span><span class="nav-text">الجزاءات والمكافآت</span></button>
 <button data-page="performance"><span class="nav-icon">▥</span><span class="nav-text">تقييم الأداء</span></button>
 </nav>
@@ -494,9 +258,7 @@ box-shadow:-10px 0 30px #101a2b30;
 </div>
 </aside>
 
-<!-- MAIN -->
 <main class="main" id="main">
-
 <header class="topbar">
 <div class="top-right">
 <button class="menu-btn" id="menuBtn">☰</button>
@@ -518,7 +280,6 @@ box-shadow:-10px 0 30px #101a2b30;
 
 <!-- DASHBOARD -->
 <div id="dashboardPage">
-
 <div class="welcome">
 <div>
 <h1>لوحة التحكم</h1>
@@ -527,59 +288,35 @@ box-shadow:-10px 0 30px #101a2b30;
 <div class="date-chip" id="dateChip"></div>
 </div>
 
-<!-- STATISTICS -->
 <div class="stats">
-
 <article class="stat">
-<div class="stat-top">
-<span class="stat-label">إجمالي الموظفين</span>
-<span class="stat-icon icon-blue">♙</span>
-</div>
-<div class="stat-value">250</div>
+<div class="stat-top"><span class="stat-label">إجمالي الموظفين</span><span class="stat-icon icon-blue">♙</span></div>
+<div class="stat-value" id="dashEmployeeCount">250</div>
 <div class="stat-foot">إجمالي العاملين بالشركة</div>
 </article>
-
 <article class="stat">
-<div class="stat-top">
-<span class="stat-label">حاضر اليوم</span>
-<span class="stat-icon icon-green">✓</span>
-</div>
+<div class="stat-top"><span class="stat-label">حاضر اليوم</span><span class="stat-icon icon-green">✓</span></div>
 <div class="stat-value">218</div>
 <div class="stat-foot">من إجمالي الموظفين</div>
 </article>
-
 <article class="stat">
-<div class="stat-top">
-<span class="stat-label">غياب اليوم</span>
-<span class="stat-icon icon-red">×</span>
-</div>
+<div class="stat-top"><span class="stat-label">غياب اليوم</span><span class="stat-icon icon-red">×</span></div>
 <div class="stat-value">12</div>
 <div class="stat-foot">موظف غير مسجل حضوره</div>
 </article>
-
 <article class="stat">
-<div class="stat-top">
-<span class="stat-label">تأخير اليوم</span>
-<span class="stat-icon icon-orange">◷</span>
-</div>
+<div class="stat-top"><span class="stat-label">تأخير اليوم</span><span class="stat-icon icon-orange">◷</span></div>
 <div class="stat-value">20</div>
 <div class="stat-foot">موظف تجاوز موعد الحضور</div>
 </article>
-
 </div>
 
-<!-- CHART + REQUESTS -->
 <div class="grid-main">
-
 <section class="panel">
 <div class="panel-head">
-<div>
-<div class="panel-title">معدل الحضور خلال الأسبوع</div>
-<div class="panel-sub">نسبة الحضور اليومية مقارنة بإجمالي الموظفين</div>
-</div>
+<div><div class="panel-title">معدل الحضور خلال الأسبوع</div><div class="panel-sub">نسبة الحضور اليومية مقارنة بإجمالي الموظفين</div></div>
 <button class="link-btn" data-goto="reports">عرض التقرير</button>
 </div>
-
 <div class="chart">
 <div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:86%"></div><div class="bar" style="height:14%"></div></div><div class="day">السبت</div></div>
 <div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:91%"></div><div class="bar" style="height:9%"></div></div><div class="day">الأحد</div></div>
@@ -588,59 +325,31 @@ box-shadow:-10px 0 30px #101a2b30;
 <div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:87%"></div><div class="bar" style="height:13%"></div></div><div class="day">الأربعاء</div></div>
 <div class="chart-col"><div class="bar-wrap"><div class="bar present" style="height:90%"></div><div class="bar" style="height:10%"></div></div><div class="day">الخميس</div></div>
 </div>
-
-<div class="legend">
-<span><i class="dot"></i> حضور</span>
-<span><i class="dot gray"></i> غياب / عدم تسجيل</span>
-</div>
+<div class="legend"><span><i class="dot"></i> حضور</span><span><i class="dot gray"></i> غياب / عدم تسجيل</span></div>
 </section>
 
 <section class="panel">
 <div class="panel-head">
-<div>
-<div class="panel-title">طلبات تحتاج مراجعة</div>
-<div class="panel-sub">طلبات تنتظر إجراء من الإدارة</div>
-</div>
+<div><div class="panel-title">طلبات تحتاج مراجعة</div><div class="panel-sub">طلبات تنتظر إجراء من الإدارة</div></div>
 <span style="font-size:10px;color:var(--secondary)">10 طلبات</span>
 </div>
-
 <div class="review-list">
-<div class="review-item">
-<div class="review-icon">▤</div>
-<div class="review-text"><strong>طلبات إجازة جديدة</strong><small>تحتاج مراجعة واعتماد</small></div>
-<span class="review-count">5 طلبات</span>
-</div>
-<div class="review-item">
-<div class="review-icon">◷</div>
-<div class="review-text"><strong>طلبات أذونات</strong><small>طلبات خروج أو تأخير</small></div>
-<span class="review-count">3 طلبات</span>
-</div>
-<div class="review-item">
-<div class="review-icon">▣</div>
-<div class="review-text"><strong>عقود قاربت على الانتهاء</strong><small>يرجى مراجعة موقف العقود</small></div>
-<span class="review-count">2 عقد</span>
-</div>
+<div class="review-item"><div class="review-icon">▤</div><div class="review-text"><strong>طلبات إجازة جديدة</strong><small>تحتاج مراجعة واعتماد</small></div><span class="review-count">5 طلبات</span></div>
+<div class="review-item"><div class="review-icon">◷</div><div class="review-text"><strong>طلبات أذونات</strong><small>طلبات خروج أو تأخير</small></div><span class="review-count">3 طلبات</span></div>
+<div class="review-item"><div class="review-icon">▣</div><div class="review-text"><strong>عقود قاربت على الانتهاء</strong><small>يرجى مراجعة موقف العقود</small></div><span class="review-count">2 عقد</span></div>
 </div>
 </section>
 </div>
 
-<!-- TABLES -->
 <div class="bottom-grid">
-
 <section class="panel">
 <div class="panel-head">
-<div>
-<div class="panel-title">آخر حركات الحضور</div>
-<div class="panel-sub">عينة توضيحية لسجل الحضور اليوم</div>
-</div>
+<div><div class="panel-title">آخر حركات الحضور</div><div class="panel-sub">عينة توضيحية لسجل الحضور اليوم</div></div>
 <button class="link-btn" data-goto="attendance">عرض الكل</button>
 </div>
-
 <div class="table-wrap">
 <table>
-<thead>
-<tr><th>الموظف</th><th>القسم</th><th>وقت الحضور</th><th>الحالة</th></tr>
-</thead>
+<thead><tr><th>الموظف</th><th>القسم</th><th>وقت الحضور</th><th>الحالة</th></tr></thead>
 <tbody>
 <tr><td><div class="employee-cell"><span class="mini-avatar">م</span>محمد أحمد</div></td><td>المخازن</td><td>08:55 ص</td><td><span class="status ok">حاضر</span></td></tr>
 <tr><td><div class="employee-cell"><span class="mini-avatar">س</span>سارة محمود</div></td><td>المبيعات</td><td>09:18 ص</td><td><span class="status late">متأخر</span></td></tr>
@@ -650,34 +359,175 @@ box-shadow:-10px 0 30px #101a2b30;
 </table>
 </div>
 </section>
-
 <section class="panel">
 <div class="panel-head">
-<div>
-<div class="panel-title">تنبيهات العقود</div>
-<div class="panel-sub">عقود تحتاج متابعة قريبة</div>
-</div>
+<div><div class="panel-title">تنبيهات العقود</div><div class="panel-sub">عقود تحتاج متابعة قريبة</div></div>
 <button class="link-btn" data-goto="employees">ملفات الموظفين</button>
 </div>
-
-<div class="contract">
-<div><strong>محمد إبراهيم</strong><small>مسؤول مخازن · عقد عمل</small></div>
-<span class="days-left">متبقي 12 يوم</span>
-</div>
-<div class="contract">
-<div><strong>سلمى خالد</strong><small>أخصائي مبيعات · عقد عمل</small></div>
-<span class="days-left">متبقي 24 يوم</span>
-</div>
-<div class="contract">
-<div><strong>تنبيه</strong><small>مدة التنبيه قابلة للتعديل من الإعدادات</small></div>
-</div>
+<div class="contract"><div><strong>محمد إبراهيم</strong><small>مسؤول مخازن · عقد عمل</small></div><span class="days-left">متبقي 12 يوم</span></div>
+<div class="contract"><div><strong>سلمى خالد</strong><small>أخصائي مبيعات · عقد عمل</small></div><span class="days-left">متبقي 24 يوم</span></div>
+<div class="contract"><div><strong>تنبيه</strong><small>مدة التنبيه قابلة للتعديل من الإعدادات</small></div></div>
 </section>
-
+</div>
+<p style="font-size:9px;color:#9AA3AF;text-align:center;margin-top:22px">الأرقام والموظفون المعروضون بيانات تجريبية لتوضيح شكل التصميم وليست بيانات حقيقية.</p>
 </div>
 
-<p style="font-size:9px;color:#9AA3AF;text-align:center;margin-top:22px">
-الأرقام والموظفون المعروضون بيانات تجريبية لتوضيح شكل التصميم وليست بيانات حقيقية.
-</p>
+<!-- EMPLOYEES LIST -->
+<div class="app-page" id="employeesPage">
+<div class="page-heading">
+<div><h1>إدارة الموظفين</h1><p>إضافة الموظفين ومتابعة بياناتهم الوظيفية والمالية</p></div>
+<button class="btn btn-primary" onclick="showEmployeeForm()">＋ إضافة موظف جديد</button>
+</div>
+
+<div class="stats">
+<div class="stat"><div class="stat-label">إجمالي الموظفين المسجلين</div><div class="stat-value" id="employeeCount">0</div></div>
+<div class="stat"><div class="stat-label">الموظفون النشطون</div><div class="stat-value" id="activeCount">0</div></div>
+<div class="stat"><div class="stat-label">إجمالي الرواتب الأساسية</div><div class="stat-value" id="totalSalaries" style="font-size:20px">0</div></div>
+<div class="stat"><div class="stat-label">موظفون لهم زيادة قادمة</div><div class="stat-value" id="upcomingCount">0</div></div>
+</div>
+
+<div class="card">
+<div class="toolbar">
+<div class="field-search"><input id="employeeSearch" placeholder="ابحث باسم الموظف أو الرقم الوظيفي أو الوظيفة..." oninput="renderEmployees()"></div>
+<select id="departmentFilter" style="max-width:190px" onchange="renderEmployees()">
+<option value="">كل الأقسام</option>
+<option>المخازن</option><option>المبيعات</option><option>الحسابات</option><option>الموارد البشرية</option><option>الإدارة</option><option>التسويق</option><option>خدمة العملاء</option><option>تقنية المعلومات</option>
+</select>
+<select id="statusFilter" style="max-width:150px" onchange="renderEmployees()">
+<option value="">كل الحالات</option><option>نشط</option><option>إجازة</option><option>موقوف</option>
+</select>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>الرقم الوظيفي</th><th>اسم الموظف</th><th>الوظيفة</th><th>القسم</th><th>تاريخ التعيين</th><th>الراتب</th><th>نسبة الزيادة</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
+<tbody id="employeesTable"></tbody>
+</table>
+</div>
+<div class="empty-state" id="employeesEmpty"><strong>لا يوجد موظفون مسجلون حتى الآن</strong>اضغط على إضافة موظف جديد لبدء تسجيل بيانات الموظفين.</div>
+</div>
+</div>
+
+<!-- EMPLOYEE FORM: SEPARATE PAGE -->
+<div class="app-page" id="employeeFormPage">
+<button class="back-link" onclick="openPage('employees')">← العودة إلى قائمة الموظفين</button>
+<div class="page-heading">
+<div><h1 id="employeeFormTitle">تسجيل موظف جديد</h1><p>أدخل البيانات الشخصية والوظيفية والراتب ونسبة الزيادة السنوية</p></div>
+<span class="tag tag-blue" id="employeeCodePreview">رقم وظيفي تلقائي</span>
+</div>
+
+<form class="card" id="employeeForm">
+<input type="hidden" id="editEmployeeId">
+<div class="form-section-title">أولاً: البيانات الأساسية</div>
+<div class="form-grid">
+<div class="form-group"><label>اسم الموظف بالكامل *</label><input id="empName" required placeholder="اكتب الاسم بالكامل"></div>
+<div class="form-group"><label>الرقم الوظيفي</label><input id="empCode" readonly placeholder="يتم إنشاؤه تلقائياً"></div>
+<div class="form-group"><label>رقم الهاتف</label><input id="empPhone" type="tel" placeholder="01xxxxxxxxx"></div>
+<div class="form-group"><label>البريد الإلكتروني</label><input id="empEmail" type="email" placeholder="name@example.com"></div>
+<div class="form-group"><label>تاريخ الميلاد</label><input id="empBirth" type="date"></div>
+<div class="form-group"><label>العنوان</label><input id="empAddress" placeholder="عنوان الموظف"></div>
+</div>
+
+<hr>
+<div class="form-section-title">ثانياً: البيانات الوظيفية</div>
+<div class="form-grid">
+<div class="form-group"><label>المسمى الوظيفي *</label><input id="empJob" required placeholder="مثال: مدير مخزن"></div>
+<div class="form-group"><label>القسم *</label>
+<select id="empDepartment" required>
+<option value="">اختر القسم</option>
+<option>المخازن</option><option>المبيعات</option><option>الحسابات</option><option>الموارد البشرية</option><option>الإدارة</option><option>التسويق</option><option>خدمة العملاء</option><option>تقنية المعلومات</option>
+</select></div>
+<div class="form-group"><label>تاريخ الالتحاق بالشركة *</label><input id="empJoinDate" type="date" required></div>
+<div class="form-group"><label>نوع العقد</label><select id="empContract"><option>دائم</option><option>مؤقت</option><option>تحت الاختبار</option><option>دوام جزئي</option></select></div>
+<div class="form-group"><label>حالة الموظف</label><select id="empStatus"><option>نشط</option><option>إجازة</option><option>موقوف</option></select></div>
+</div>
+
+<hr>
+<div class="form-section-title">ثالثاً: الراتب والزيادة السنوية</div>
+<div class="form-grid">
+<div class="form-group"><label>الراتب الأساسي الحالي بالجنيه *</label><input id="empSalary" type="number" min="0" step="0.01" required placeholder="مثال: 10000" oninput="calculateIncrease()"></div>
+<div class="form-group"><label>نسبة الزيادة السنوية (%) *</label><input id="empRate" type="number" min="0" max="100" step="0.01" required value="10" placeholder="مثال: 15" oninput="calculateIncrease()"></div>
+<div class="form-group"><label>تاريخ آخر زيادة</label><input id="empLastRaise" type="date"></div>
+<div class="form-group"><label>موعد الزيادة السنوية القادمة *</label><input id="empNextRaise" type="date" required></div>
+</div>
+
+<div class="increase-box" style="margin-top:18px">
+<strong style="font-size:12px;color:var(--primary)">معاينة حساب الزيادة السنوية</strong>
+<div class="increase-result">
+<div class="result-item"><small>قيمة الزيادة المتوقعة</small><strong id="previewRaise">0 ج.م</strong></div>
+<div class="result-item"><small>الراتب بعد الزيادة</small><strong id="previewSalary">0 ج.م</strong></div>
+<div class="result-item"><small>نسبة الزيادة</small><strong id="previewRate">0%</strong></div>
+</div>
+<div class="hint">يتم حساب الزيادة كنسبة من الراتب الأساسي الحالي. لن يتغير راتب الموظف فعلياً إلا بعد اعتماد الزيادة من صفحة الزيادات السنوية.</div>
+</div>
+
+<div class="form-actions">
+<button class="btn btn-primary" type="submit">حفظ بيانات الموظف</button>
+<button class="btn btn-light" type="button" onclick="openPage('employees')">إلغاء</button>
+</div>
+</form>
+</div>
+
+<!-- EMPLOYEE DETAILS -->
+<div class="app-page" id="employeeDetailsPage">
+<button class="back-link" onclick="openPage('employees')">← العودة إلى قائمة الموظفين</button>
+<div class="page-heading">
+<div><h1 id="detailName">ملف الموظف</h1><p id="detailCode"></p></div>
+<div class="toolbar">
+<button class="btn btn-light" id="editDetailBtn">تعديل البيانات</button>
+<button class="btn btn-primary" id="detailRaiseBtn">اعتماد زيادة</button>
+</div>
+</div>
+<div class="card">
+<div class="form-section-title">البيانات الشخصية والوظيفية</div>
+<div class="profile-grid" id="employeeProfile"></div>
+<hr>
+<div class="form-section-title">الراتب والزيادة السنوية</div>
+<div class="profile-grid" id="employeeSalaryProfile"></div>
+</div>
+<div class="card">
+<div class="panel-head"><div class="panel-title">سجل الزيادات السابقة</div></div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>تاريخ الاعتماد</th><th>الراتب قبل الزيادة</th><th>النسبة</th><th>قيمة الزيادة</th><th>الراتب بعد الزيادة</th></tr></thead>
+<tbody id="employeeRaiseHistory"></tbody>
+</table>
+</div>
+<div class="empty-state" id="historyEmpty">لا توجد زيادات مسجلة لهذا الموظف حتى الآن.</div>
+</div>
+</div>
+
+<!-- ANNUAL RAISES -->
+<div class="app-page" id="raisesPage">
+<div class="page-heading">
+<div><h1>إدارة الزيادات السنوية</h1><p>متابعة الزيادات القادمة والمستحقة وسجل الزيادات المعتمدة</p></div>
+</div>
+<div class="notice">يتم حساب الزيادة وفق النسبة المحددة في ملف كل موظف. اعتماد الزيادة يحدّث الراتب الأساسي ويسجل الراتب السابق وقيمة الزيادة وتاريخها في سجل الموظف.</div>
+<div class="stats">
+<div class="stat"><div class="stat-label">موظفون مسجلون</div><div class="stat-value" id="raiseTotal">0</div></div>
+<div class="stat"><div class="stat-label">زيادات مستحقة</div><div class="stat-value" id="raiseDue">0</div></div>
+<div class="stat"><div class="stat-label">زيادات قادمة</div><div class="stat-value" id="raiseUpcoming">0</div></div>
+<div class="stat"><div class="stat-label">إجمالي الزيادات المعتمدة</div><div class="stat-value" id="raiseTotalAmount" style="font-size:20px">0</div></div>
+</div>
+<div class="card">
+<div class="panel-head"><div><div class="panel-title">مواعيد الزيادات السنوية</div><div class="panel-sub">الزيادات المستحقة والقادمة لكل موظف</div></div></div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>الموظف</th><th>القسم</th><th>الراتب الحالي</th><th>النسبة</th><th>قيمة الزيادة المتوقعة</th><th>الراتب بعد الزيادة</th><th>تاريخ الاستحقاق</th><th>الحالة</th><th>الإجراء</th></tr></thead>
+<tbody id="raisesTable"></tbody>
+</table>
+</div>
+<div class="empty-state" id="raisesEmpty"><strong>لا توجد بيانات زيادات بعد</strong>أضف موظفين وحدد نسبة وموعد الزيادة السنوية لكل موظف.</div>
+</div>
+<div class="card">
+<div class="panel-head"><div><div class="panel-title">سجل الزيادات المعتمدة لجميع الموظفين</div><div class="panel-sub">السجل التاريخي الكامل للزيادات</div></div></div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>الموظف</th><th>تاريخ الزيادة</th><th>الراتب السابق</th><th>النسبة</th><th>قيمة الزيادة</th><th>الراتب الجديد</th></tr></thead>
+<tbody id="allRaiseHistory"></tbody>
+</table>
+</div>
+<div class="empty-state" id="allHistoryEmpty">لم يتم اعتماد أي زيادة حتى الآن.</div>
+</div>
 </div>
 
 <!-- OTHER PAGES -->
@@ -685,9 +535,7 @@ box-shadow:-10px 0 30px #101a2b30;
 <div class="placeholder-icon">✦</div>
 <h2 id="placeholderTitle">القسم</h2>
 <p id="placeholderText">سيتم بناء هذه الصفحة وربطها بباقي وحدات نظام HR SYSTEM في مراحل التنفيذ التالية.</p>
-<div style="margin-top:22px;padding:15px;background:#F5F8FC;border-radius:10px;color:#7C8796;font-size:11px">
-الهيكل الأساسي جاهز — هذه الصفحة ضمن خطة التطوير.
-</div>
+<div style="margin-top:22px;padding:15px;background:#F5F8FC;border-radius:10px;color:#7C8796;font-size:11px">الهيكل الأساسي جاهز — هذه الصفحة ضمن خطة التطوير.</div>
 </div>
 
 </section>
@@ -695,9 +543,21 @@ box-shadow:-10px 0 30px #101a2b30;
 </div>
 
 <script>
+/* ==============================
+   HR SYSTEM - EMPLOYEE MANAGEMENT
+   Local browser storage
+============================== */
+
+const STORAGE_KEY="hr_system_employees_v1";
+let employees=loadEmployees();
+let currentEmployeeId=null;
+
 const pageNames={
 dashboard:"لوحة التحكم",
 employees:"إدارة الموظفين",
+employeeForm:"تسجيل موظف",
+employeeDetails:"ملف الموظف",
+raises:"الزيادات السنوية",
 attendance:"الحضور والانصراف",
 leaves:"الإجازات والأذونات",
 payroll:"الرواتب والأجور",
@@ -715,23 +575,96 @@ const main=document.getElementById("main");
 const dashboard=document.getElementById("dashboardPage");
 const placeholder=document.getElementById("placeholder");
 
+function loadEmployees(){
+try{
+const saved=JSON.parse(localStorage.getItem(STORAGE_KEY));
+return Array.isArray(saved)?saved:[];
+}catch(error){return []}
+}
+
+function saveEmployees(){
+localStorage.setItem(STORAGE_KEY,JSON.stringify(employees));
+}
+
+function money(value){
+return (Number(value)||0).toLocaleString("en-US",{maximumFractionDigits:2})+" ج.م";
+}
+
+function formatDate(value){
+if(!value)return "—";
+const d=new Date(value+"T00:00:00");
+if(isNaN(d))return value;
+return new Intl.DateTimeFormat("ar-EG",{year:"numeric",month:"short",day:"numeric"}).format(d);
+}
+
+function todayString(){
+const d=new Date();
+const local=new Date(d.getTime()-d.getTimezoneOffset()*60000);
+return local.toISOString().slice(0,10);
+}
+
+function addOneYear(dateString){
+if(!dateString)return "";
+const d=new Date(dateString+"T12:00:00");
+if(isNaN(d))return "";
+const month=d.getMonth();
+d.setFullYear(d.getFullYear()+1);
+if(d.getMonth()!==month)d.setDate(0);
+return d.toISOString().slice(0,10);
+}
+
+function escapeHTML(value){
+return String(value??"").replace(/[&<>"']/g,char=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[char]));
+}
+
+function generateEmployeeCode(){
+let max=0;
+employees.forEach(emp=>{
+const match=String(emp.code||"").match(/EMP-(\d+)/);
+if(match)max=Math.max(max,Number(match[1]));
+});
+return "EMP-"+String(max+1).padStart(4,"0");
+}
+
+function getEmployee(id){
+return employees.find(emp=>emp.id===id);
+}
+
+/* NAVIGATION */
+function hideAllPages(){
+dashboard.style.display="none";
+placeholder.style.display="none";
+document.querySelectorAll(".app-page").forEach(page=>page.style.display="none");
+}
+
 function openPage(page){
+hideAllPages();
+
+const pageElement=document.getElementById(page+"Page");
+if(page==="dashboard"){
+dashboard.style.display="block";
+}else if(pageElement){
+pageElement.style.display="block";
+}else{
+placeholder.style.display="block";
+document.getElementById("placeholderTitle").textContent=pageNames[page]||"القسم";
+document.getElementById("placeholderText").textContent=
+"سيتم بناء صفحة "+(pageNames[page]||"القسم")+" وربطها بباقي وحدات نظام HR SYSTEM في مراحل التطوير القادمة.";
+}
+
 document.querySelectorAll("[data-page]").forEach(button=>{
 button.classList.toggle("active",button.dataset.page===page);
 });
 
 document.getElementById("breadcrumb").textContent=pageNames[page]||"لوحة التحكم";
 
-dashboard.style.display=page==="dashboard"?"block":"none";
-placeholder.style.display=page==="dashboard"?"none":"block";
+if(page==="employees")renderEmployees();
+if(page==="raises")renderRaises();
+updateDashboardEmployeeCount();
 
-document.getElementById("placeholderTitle").textContent=pageNames[page]||"القسم";
-document.getElementById("placeholderText").textContent=
-page==="dashboard"?"":"سيتم بناء صفحة "+pageNames[page]+" وربطها بباقي وحدات نظام HR SYSTEM في مراحل التطوير القادمة.";
-
-if(window.innerWidth<=700){
-sidebar.classList.remove("mobile-open");
-}
+if(window.innerWidth<=700)sidebar.classList.remove("mobile-open");
 }
 
 document.querySelectorAll("[data-page]").forEach(button=>{
@@ -751,16 +684,360 @@ main.classList.toggle("expanded");
 }
 });
 
+/* EMPLOYEE FORM */
+function showEmployeeForm(id=null){
+const form=document.getElementById("employeeForm");
+form.reset();
+
+document.getElementById("editEmployeeId").value="";
+document.getElementById("employeeFormTitle").textContent="تسجيل موظف جديد";
+
+if(id){
+const emp=getEmployee(id);
+if(!emp)return;
+document.getElementById("editEmployeeId").value=emp.id;
+document.getElementById("employeeFormTitle").textContent="تعديل بيانات الموظف";
+document.getElementById("empName").value=emp.name||"";
+document.getElementById("empCode").value=emp.code||"";
+document.getElementById("empPhone").value=emp.phone||"";
+document.getElementById("empEmail").value=emp.email||"";
+document.getElementById("empBirth").value=emp.birth||"";
+document.getElementById("empAddress").value=emp.address||"";
+document.getElementById("empJob").value=emp.job||"";
+document.getElementById("empDepartment").value=emp.department||"";
+document.getElementById("empJoinDate").value=emp.joinDate||"";
+document.getElementById("empContract").value=emp.contract||"دائم";
+document.getElementById("empStatus").value=emp.status||"نشط";
+document.getElementById("empSalary").value=emp.salary??"";
+document.getElementById("empRate").value=emp.rate??10;
+document.getElementById("empLastRaise").value=emp.lastRaise||"";
+document.getElementById("empNextRaise").value=emp.nextRaise||"";
+document.getElementById("employeeCodePreview").textContent=emp.code||"";
+}else{
+const code=generateEmployeeCode();
+document.getElementById("empCode").value=code;
+document.getElementById("employeeCodePreview").textContent=code;
+document.getElementById("empRate").value=10;
+document.getElementById("empNextRaise").value="";
+document.getElementById("empLastRaise").value="";
+}
+
+calculateIncrease();
+openPage("employeeForm");
+}
+
+document.getElementById("empJoinDate").addEventListener("change",function(){
+if(!document.getElementById("editEmployeeId").value){
+document.getElementById("empNextRaise").value=addOneYear(this.value);
+}
+});
+
+function calculateIncrease(){
+const salary=Number(document.getElementById("empSalary").value)||0;
+const rate=Number(document.getElementById("empRate").value)||0;
+const increase=salary*rate/100;
+document.getElementById("previewRaise").textContent=money(increase);
+document.getElementById("previewSalary").textContent=money(salary+increase);
+document.getElementById("previewRate").textContent=rate+"%";
+}
+
+document.getElementById("employeeForm").addEventListener("submit",function(event){
+event.preventDefault();
+
+const id=document.getElementById("editEmployeeId").value;
+const oldEmployee=id?getEmployee(id):null;
+const salary=Number(document.getElementById("empSalary").value);
+const rate=Number(document.getElementById("empRate").value);
+
+if(!Number.isFinite(salary)||salary<0){
+alert("من فضلك أدخل راتباً أساسياً صحيحاً.");
+return;
+}
+if(!Number.isFinite(rate)||rate<0||rate>100){
+alert("نسبة الزيادة يجب أن تكون بين 0 و100.");
+return;
+}
+
+const nextRaise=document.getElementById("empNextRaise").value;
+if(!nextRaise){
+alert("من فضلك حدد موعد الزيادة السنوية القادمة.");
+return;
+}
+
+const data={
+id:oldEmployee?oldEmployee.id:"emp_"+Date.now()+"_"+Math.random().toString(16).slice(2),
+code:oldEmployee?oldEmployee.code:generateEmployeeCode(),
+name:document.getElementById("empName").value.trim(),
+phone:document.getElementById("empPhone").value.trim(),
+email:document.getElementById("empEmail").value.trim(),
+birth:document.getElementById("empBirth").value,
+address:document.getElementById("empAddress").value.trim(),
+job:document.getElementById("empJob").value.trim(),
+department:document.getElementById("empDepartment").value,
+joinDate:document.getElementById("empJoinDate").value,
+contract:document.getElementById("empContract").value,
+status:document.getElementById("empStatus").value,
+salary:salary,
+rate:rate,
+lastRaise:document.getElementById("empLastRaise").value,
+nextRaise:nextRaise,
+raiseHistory:oldEmployee?(oldEmployee.raiseHistory||[]):[],
+createdAt:oldEmployee?oldEmployee.createdAt:new Date().toISOString()
+};
+
+if(oldEmployee){
+const index=employees.findIndex(emp=>emp.id===id);
+employees[index]=data;
+}else{
+employees.push(data);
+}
+
+saveEmployees();
+renderEmployees();
+updateDashboardEmployeeCount();
+alert(oldEmployee?"تم تحديث بيانات الموظف بنجاح.":"تم تسجيل الموظف بنجاح.");
+openPage("employees");
+});
+
+/* EMPLOYEE LIST */
+function renderEmployees(){
+const body=document.getElementById("employeesTable");
+const search=(document.getElementById("employeeSearch")?.value||"").trim().toLowerCase();
+const department=document.getElementById("departmentFilter")?.value||"";
+const status=document.getElementById("statusFilter")?.value||"";
+
+const filtered=employees.filter(emp=>{
+const matchesSearch=[emp.name,emp.code,emp.job,emp.department].some(value=>String(value||"").toLowerCase().includes(search));
+return matchesSearch&&(!department||emp.department===department)&&(!status||emp.status===status);
+});
+
+body.innerHTML=filtered.map(emp=>`
+<tr>
+<td><strong>${escapeHTML(emp.code)}</strong></td>
+<td><span class="employee-name">${escapeHTML(emp.name)}</span></td>
+<td>${escapeHTML(emp.job)}</td>
+<td>${escapeHTML(emp.department)}</td>
+<td>${formatDate(emp.joinDate)}</td>
+<td><span class="money">${money(emp.salary)}</span></td>
+<td>${Number(emp.rate)||0}%</td>
+<td><span class="tag ${emp.status==="نشط"?"tag-green":emp.status==="إجازة"?"tag-orange":"tag-red"}">${escapeHTML(emp.status)}</span></td>
+<td><div class="action-buttons">
+<button class="small-btn btn-light" onclick="showEmployeeDetails('${emp.id}')">عرض</button>
+<button class="small-btn btn-primary" onclick="showEmployeeForm('${emp.id}')">تعديل</button>
+<button class="small-btn btn-danger" onclick="deleteEmployee('${emp.id}')">حذف</button>
+</div></td>
+</tr>`).join("");
+
+document.getElementById("employeesEmpty").style.display=filtered.length?"none":"block";
+document.getElementById("employeeCount").textContent=employees.length;
+document.getElementById("activeCount").textContent=employees.filter(emp=>emp.status==="نشط").length;
+document.getElementById("totalSalaries").textContent=money(employees.reduce((sum,emp)=>sum+(Number(emp.salary)||0),0));
+document.getElementById("upcomingCount").textContent=employees.filter(emp=>emp.nextRaise).length;
+}
+
+function deleteEmployee(id){
+const emp=getEmployee(id);
+if(!emp)return;
+if(!confirm("هل أنت متأكد من حذف الموظف "+emp.name+"؟ سيتم حذف سجل بياناته وزياداته من هذا المتصفح."))return;
+employees=employees.filter(item=>item.id!==id);
+saveEmployees();
+renderEmployees();
+updateDashboardEmployeeCount();
+}
+
+/* EMPLOYEE DETAILS */
+function showEmployeeDetails(id){
+const emp=getEmployee(id);
+if(!emp)return;
+currentEmployeeId=id;
+
+document.getElementById("detailName").textContent=emp.name;
+document.getElementById("detailCode").textContent="الرقم الوظيفي: "+emp.code;
+
+const fields=[
+["رقم الهاتف",emp.phone],["البريد الإلكتروني",emp.email],["تاريخ الميلاد",formatDate(emp.birth)],
+["العنوان",emp.address],["المسمى الوظيفي",emp.job],["القسم",emp.department],
+["تاريخ التعيين",formatDate(emp.joinDate)],["نوع العقد",emp.contract],["الحالة",emp.status]
+];
+
+document.getElementById("employeeProfile").innerHTML=fields.map(([label,value])=>`
+<div class="profile-item"><small>${label}</small><strong>${escapeHTML(value||"—")}</strong></div>
+`).join("");
+
+const salaryFields=[
+["الراتب الأساسي الحالي",money(emp.salary)],
+["نسبة الزيادة السنوية",(Number(emp.rate)||0)+"%"],
+["قيمة الزيادة المتوقعة",money((Number(emp.salary)||0)*(Number(emp.rate)||0)/100)],
+["الراتب بعد الزيادة المتوقعة",money((Number(emp.salary)||0)*(1+(Number(emp.rate)||0)/100))],
+["آخر زيادة",formatDate(emp.lastRaise)],
+["موعد الزيادة القادمة",formatDate(emp.nextRaise)]
+];
+
+document.getElementById("employeeSalaryProfile").innerHTML=salaryFields.map(([label,value])=>`
+<div class="profile-item"><small>${label}</small><strong>${escapeHTML(value)}</strong></div>
+`).join("");
+
+document.getElementById("editDetailBtn").onclick=()=>showEmployeeForm(id);
+document.getElementById("detailRaiseBtn").onclick=()=>approveRaise(id);
+
+const history=[...(emp.raiseHistory||[])].sort((a,b)=>b.date.localeCompare(a.date));
+document.getElementById("employeeRaiseHistory").innerHTML=history.map(item=>`
+<tr>
+<td>${formatDate(item.date)}</td>
+<td><span class="money">${money(item.oldSalary)}</span></td>
+<td>${item.rate}%</td>
+<td><span class="money">${money(item.amount)}</span></td>
+<td><span class="money">${money(item.newSalary)}</span></td>
+</tr>`).join("");
+
+document.getElementById("historyEmpty").style.display=history.length?"none":"block";
+openPage("employeeDetails");
+}
+
+/* ANNUAL RAISES */
+function raiseStatus(emp){
+if(!emp.nextRaise)return {label:"غير محدد",className:"tag-red"};
+const today=todayString();
+if(emp.nextRaise<=today)return {label:"مستحقة الآن",className:"tag-orange"};
+return {label:"قادمة",className:"tag-green"};
+}
+
+function renderRaises(){
+const due=employees.filter(emp=>emp.nextRaise&&emp.nextRaise<=todayString());
+const upcoming=employees.filter(emp=>emp.nextRaise&&emp.nextRaise>todayString());
+const totalApproved=employees.reduce((sum,emp)=>sum+(emp.raiseHistory||[]).reduce((s,item)=>s+(Number(item.amount)||0),0),0);
+
+document.getElementById("raiseTotal").textContent=employees.length;
+document.getElementById("raiseDue").textContent=due.length;
+document.getElementById("raiseUpcoming").textContent=upcoming.length;
+document.getElementById("raiseTotalAmount").textContent=money(totalApproved);
+
+const sorted=[...employees].filter(emp=>emp.nextRaise).sort((a,b)=>a.nextRaise.localeCompare(b.nextRaise));
+document.getElementById("raisesTable").innerHTML=sorted.map(emp=>{
+const amount=(Number(emp.salary)||0)*(Number(emp.rate)||0)/100;
+const status=raiseStatus(emp);
+const isDue=emp.nextRaise<=todayString();
+return `<tr>
+<td><strong class="employee-name">${escapeHTML(emp.name)}</strong><br><small>${escapeHTML(emp.code)}</small></td>
+<td>${escapeHTML(emp.department)}</td>
+<td><span class="money">${money(emp.salary)}</span></td>
+<td>${Number(emp.rate)||0}%</td>
+<td><span class="money">${money(amount)}</span></td>
+<td><span class="money">${money((Number(emp.salary)||0)+amount)}</span></td>
+<td>${formatDate(emp.nextRaise)}</td>
+<td><span class="tag ${status.className}">${status.label}</span></td>
+<td><div class="action-buttons">
+<button class="small-btn btn-light" onclick="showEmployeeDetails('${emp.id}')">ملف الموظف</button>
+${isDue?`<button class="small-btn btn-success" onclick="approveRaise('${emp.id}')">اعتماد الزيادة</button>`:""}
+</div></td>
+</tr>`;
+}).join("");
+
+document.getElementById("raisesEmpty").style.display=sorted.length?"none":"block";
+
+let allHistory=[];
+employees.forEach(emp=>{
+(emp.raiseHistory||[]).forEach(item=>{
+allHistory.push({...item,employeeName:emp.name,employeeCode:emp.code});
+});
+});
+allHistory.sort((a,b)=>b.date.localeCompare(a.date));
+
+document.getElementById("allRaiseHistory").innerHTML=allHistory.map(item=>`
+<tr>
+<td><strong>${escapeHTML(item.employeeName)}</strong><br><small>${escapeHTML(item.employeeCode)}</small></td>
+<td>${formatDate(item.date)}</td>
+<td><span class="money">${money(item.oldSalary)}</span></td>
+<td>${item.rate}%</td>
+<td><span class="money">${money(item.amount)}</span></td>
+<td><span class="money">${money(item.newSalary)}</span></td>
+</tr>`).join("");
+
+document.getElementById("allHistoryEmpty").style.display=allHistory.length?"none":"block";
+}
+
+function approveRaise(id){
+const emp=getEmployee(id);
+if(!emp)return;
+
+const today=todayString();
+if(!emp.nextRaise){
+alert("لا يوجد موعد محدد للزيادة السنوية لهذا الموظف.");
+return;
+}
+if(emp.nextRaise>today){
+alert("موعد الزيادة القادمة لم يحن بعد. تاريخ الاستحقاق: "+formatDate(emp.nextRaise));
+return;
+}
+
+const oldSalary=Number(emp.salary)||0;
+const rate=Number(emp.rate)||0;
+const amount=oldSalary*rate/100;
+const newSalary=oldSalary+amount;
+
+if(rate<=0){
+alert("نسبة الزيادة لهذا الموظف تساوي صفر. عدّل النسبة أولاً.");
+return;
+}
+
+const confirmed=confirm(
+"تأكيد اعتماد الزيادة السنوية للموظف: "+emp.name+
+"\nالراتب الحالي: "+money(oldSalary)+
+"\nنسبة الزيادة: "+rate+"%"+
+"\nقيمة الزيادة: "+money(amount)+
+"\nالراتب الجديد: "+money(newSalary)+
+"\n\nهل تريد اعتماد الزيادة وتحديث الراتب؟"
+);
+if(!confirmed)return;
+
+const record={
+id:"raise_"+Date.now(),
+date:today,
+oldSalary:oldSalary,
+rate:rate,
+amount:amount,
+newSalary:newSalary
+};
+
+if(!Array.isArray(emp.raiseHistory))emp.raiseHistory=[];
+emp.raiseHistory.push(record);
+emp.salary=Number(newSalary.toFixed(2));
+emp.lastRaise=today;
+emp.nextRaise=addOneYear(emp.nextRaise);
+
+saveEmployees();
+renderEmployees();
+renderRaises();
+updateDashboardEmployeeCount();
+
+alert("تم اعتماد الزيادة وتحديث الراتب بنجاح.\nالراتب الجديد: "+money(newSalary));
+
+if(document.getElementById("employeeDetailsPage").style.display==="block"){
+showEmployeeDetails(id);
+}else{
+openPage("raises");
+}
+}
+
+/* DASHBOARD COUNTER */
+function updateDashboardEmployeeCount(){
+document.getElementById("dashEmployeeCount").textContent=
+employees.length?employees.length:"250";
+}
+
+/* DATE */
 const now=new Date();
 const dateText=new Intl.DateTimeFormat("ar-EG",{
-weekday:"long",
-year:"numeric",
-month:"long",
-day:"numeric"
+weekday:"long",year:"numeric",month:"long",day:"numeric"
 }).format(now);
-
 document.getElementById("todayDate").textContent=dateText;
 document.getElementById("dateChip").textContent=dateText;
+
+/* INITIALIZE */
+renderEmployees();
+renderRaises();
+updateDashboardEmployeeCount();
+openPage("dashboard");
 </script>
 </body>
 </html>
